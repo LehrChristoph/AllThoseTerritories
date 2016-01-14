@@ -33,6 +33,15 @@ public class Player {
 		this.ownedTerritories.add(territory);
 	}
 	
+	public void removeTerritory(Territory territory){
+		for(Territory owned : this.ownedTerritories){
+			if(owned.equals(territory)){
+				this.ownedTerritories.remove(owned);
+				return;
+			}
+		}
+	}
+	
 	public ArrayList<Territory> getTerritories(){
 		return this.ownedTerritories;
 	}
@@ -49,7 +58,7 @@ public class Player {
 		}
 		
 		armies+=(this.ownedTerritories.size()/3);
-		
+		System.out.println("Player " + this.name +" has " +armies + " reenforcements");
 		this.armiesToPlace = armies;
 	}
 	
@@ -69,5 +78,17 @@ public class Player {
 	
 	public boolean armiesLeftToPlace(){
 		return (this.armiesToPlace>0);
+	}
+	
+	public int getArmiesLeftToPlace(){
+		return this.armiesToPlace;
+	}
+	
+	public String toString(){
+		return new String(this.name);
+	}
+	
+	public void setContinents(ArrayList<Continent> continents){
+		this.ownedContinents = continents;
 	}
 }

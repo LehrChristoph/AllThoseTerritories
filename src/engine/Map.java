@@ -3,8 +3,10 @@
  */
 package engine;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Polygon;
 import java.awt.event.ActionEvent;
@@ -22,6 +24,7 @@ import java.util.Queue;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import org.omg.CORBA.INTERNAL;
 
@@ -114,25 +117,33 @@ public class Map extends JPanel implements MouseMotionListener, MouseListener, A
 		this.territoriesToPick = (HashMap<String, Territory>) this.territories.clone();
 	}
 	
+	public void newRound(){
+		for(Territory territory : this.territories.values()){
+			territory.newRound();
+		}
+	}
+	
 	@Override
 	public void paintComponent(Graphics g) {
 	    super.paintComponent(g);
-	        
-	    g.setColor(Color.BLACK);
 	    
-	    for(String territory : this.territories.keySet()){
-	    	Point currentTerritory = this.territories.get(territory).getCapital();
+	    Graphics2D g2d = (Graphics2D) g;
+	    g2d.setStroke(new BasicStroke(2));
+	    g2d.setColor(Color.BLACK);
+	    
+	    for(Territory territory : this.territories.values()){
+	    	Point currentTerritory = territory.getCapital();
 	    	
-	    	g.drawString(String.valueOf(this.territories.get(territory).getArmies()), (int)currentTerritory.getX(), (int)currentTerritory.getY());
+	    	g2d.drawString(String.valueOf(territory.getArmies()), (int)currentTerritory.getX(), (int)currentTerritory.getY());
 	    	
-	    	for(Point captial : this.territories.get(territory).getNeighbourCaptials()){
-	    		g.drawLine((int)currentTerritory.getX(), (int)currentTerritory.getY(), (int)captial.getX(), (int)captial.getY());
+	    	for(Point captial : territory.getNeighbourCaptials()){
+	    		g2d.drawLine((int)currentTerritory.getX(), (int)currentTerritory.getY(), (int)captial.getX(), (int)captial.getY());
 	    	}
 	    		
 	    }
 	    
-	    for(String name : this.territories.keySet()){
-	    	this.territories.get(name).paintComponent(g, defaultColor);
+	    for(Territory territory : this.territories.values()){
+	    	territory.paintComponent(g, defaultColor);
 	    }
 	}
 	
@@ -146,10 +157,10 @@ public class Map extends JPanel implements MouseMotionListener, MouseListener, A
 	public void mouseMoved(MouseEvent e) {
 		Territory enteredTerritory = null;
 		
-		for(String name : this.territories.keySet()){
-			for(Polygon p: this.territories.get(name).getLandslides()){
+		for(Territory territory : this.territories.values()){
+			for(Polygon p: territory.getLandslides()){
 				if(p.contains(e.getPoint())){
-					enteredTerritory = this.territories.get(name);
+					enteredTerritory = territory;
 					break;
 				}
 			}
@@ -191,10 +202,10 @@ public class Map extends JPanel implements MouseMotionListener, MouseListener, A
 		// TODO Auto-generated method stub
 		Territory enteredTerritory = null;
 		
-		for(String name : this.territories.keySet()){
-			for(Polygon p: this.territories.get(name).getLandslides()){
+		for(Territory territory : this.territories.values()){
+			for(Polygon p: territory.getLandslides()){
 				if(p.contains(e.getPoint())){
-					enteredTerritory = this.territories.get(name);
+					enteredTerritory = territory;
 					break;
 				}
 			}
@@ -207,12 +218,17 @@ public class Map extends JPanel implements MouseMotionListener, MouseListener, A
 			}else if(enteredTerritory.getOwner().equals(this.game.getCurrentPlayer()) && this.game.getPhase().equalsIgnoreCase(AllThoseTerritories.PHASE_PLACE)){
 				placeArmies(enteredTerritory);
 			}else if(this.game.getPhase().equalsIgnoreCase(AllThoseTerritories.PHASE_ATTACK_MOVE)){
-				if(enteredTerritory.getOwner().equals(this.game.getCurrentPlayer()) && this.activeTerritories == null){
+				if(this.activeTerritories != null && this.activeTerritories.equals(enteredTerritory)){
+					this.activeTerritories.setActive(false);
+					this.activeTerritories.paintComponent(this.getGraphics());
+					this.activeTerritories = null;
+				}else if(enteredTerritory.getOwner().equals(this.game.getCurrentPlayer()) && this.activeTerritories == null){
 					this.activeTerritories = enteredTerritory;
 					this.activeTerritories.setActive(true);
-				}else if(enteredTerritory.getOwner().equals(this.game.getCurrentPlayer()) && this.activeTerritories.isNeighbourOf(enteredTerritory) && enteredTerritory.getOwner().equals(this.game.getCurrentPlayer())){
+					this.activeTerritories.paintComponent(this.getGraphics());
+				}else if(SwingUtilities.isRightMouseButton(e) && enteredTerritory.getOwner().equals(this.game.getCurrentPlayer()) && this.activeTerritories != null && this.activeTerritories.isNeighbourOf(enteredTerritory) && enteredTerritory.getOwner().equals(this.game.getCurrentPlayer())){
 					moveArmie(enteredTerritory);
-				}else if(!enteredTerritory.getOwner().equals(this.game.getCurrentPlayer()) && this.activeTerritories.isNeighbourOf(enteredTerritory)){
+				}else if(SwingUtilities.isLeftMouseButton(e) && !enteredTerritory.getOwner().equals(this.game.getCurrentPlayer()) && this.activeTerritories != null && this.activeTerritories.isNeighbourOf(enteredTerritory)){
 					attack(enteredTerritory);
 				}
 			}
@@ -254,6 +270,8 @@ public class Map extends JPanel implements MouseMotionListener, MouseListener, A
 		currentPlayer.addTerritory(picked);
 		this.territoriesToPick.remove(picked.getName());
 		
+		System.out.println(this.game.getCurrentPlayer() + " picked " + picked);
+		
 		this.game.nextPlayer();
 		if(this.territoriesToPick.size() <=0){
 			this.game.nextPhase();
@@ -269,12 +287,14 @@ public class Map extends JPanel implements MouseMotionListener, MouseListener, A
 				this.game.nextPhase();
 			}
 			picked.paintComponent(this.getGraphics());
+			System.out.println("Player " + currentPlayer + " has " + currentPlayer.getArmiesLeftToPlace() + " reenforcements left to place");
 		}
 	}
 	
 	private void moveArmie(Territory picked){
-		
-		
+		this.activeTerritories.moveArmies(picked);
+		this.activeTerritories.paintComponent(this.getGraphics());
+		picked.paintComponent(this.getGraphics());
 	}
 	
 	private void attack(Territory picked){
@@ -292,18 +312,20 @@ public class Map extends JPanel implements MouseMotionListener, MouseListener, A
 			defendArmies =2;
 		}
 		
+		System.out.println("Player " + this.game.getCurrentPlayer() + " attacks " + picked + "("+ defendArmies +" defenders)" + " from " + this.activeTerritories + "(" + attackArmies + " invaders)");
+		
 		ArrayList<Integer> attackDices = new ArrayList<>();
 		ArrayList<Integer> defendDices = new ArrayList<>();
 
 		for(int i=0; i < attackArmies; i++){
-			attackDices.add((int)Math.floor(6*Math.random()));
+			attackDices.add(1+(int)Math.floor(6*Math.random()));
 		}
 		
 		Collections.sort(attackDices);
 		Collections.reverse(attackDices);
 
 		for(int i=0; i < defendArmies; i++){
-			defendDices.add((int)Math.floor(6*Math.random()));
+			defendDices.add(1+(int)Math.floor(6*Math.random()));
 		}
 		
 		Collections.sort(defendDices);
@@ -311,17 +333,22 @@ public class Map extends JPanel implements MouseMotionListener, MouseListener, A
 		
 		int defenderWins =0;
 		
-		if(attackDices.get(0)<defendDices.get(0)){
+		if(attackDices.get(0)<=defendDices.get(0)){
 			defenderWins++;
 		}
-		if(attackDices.size()>1 && defendDices.size()>1 && attackDices.get(1)<defendDices.get(1)){
+		if(attackDices.size()>1 && defendDices.size()>1 && attackDices.get(1)<=defendDices.get(1)){
 			defenderWins++;
 		}
 		
+		System.out.println("Invader: " + attackDices + " Defender: " + defendDices);
+		
 		if(defenderWins ==0){
+			System.out.println("Invader wins");
 			picked.setOwner(this.game.getCurrentPlayer());
 			picked.setArmies(attackArmies);
+			this.activeTerritories.setArmies(this.activeTerritories.getArmies() - attackArmies);
 		}else{
+			System.out.println("Defender wins");
 			this.activeTerritories.decrementArmies(defenderWins);
 			picked.decrementArmies(defendArmies-defenderWins);
 		}
@@ -333,10 +360,22 @@ public class Map extends JPanel implements MouseMotionListener, MouseListener, A
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		this.activeTerritories.setActive(false);
-		this.activeTerritories.paintComponent(this.getGraphics());
-		this.activeTerritories=null;
+		if(this.activeTerritories != null){
+			this.activeTerritories.setActive(false);
+			this.activeTerritories.paintComponent(this.getGraphics());
+			this.activeTerritories=null;
+		}
 		this.game.nextPhase();
+	}
+	
+	public ArrayList<Continent> checkContinents(ArrayList<Territory> territories){
+		ArrayList<Continent> userOwnedContinents = new ArrayList<>();
+		for(Continent continent : this.continents.values()){
+			if(continent.checkTerritories(territories)){
+				userOwnedContinents.add(continent);
+			}
+		}
+		return userOwnedContinents;
 	}
 }
 
@@ -355,6 +394,22 @@ class Continent{
 		this.continentBonus = continentBonus;
 		this.name = name;
 		this.territories = territories;
+	}
+	
+	public boolean checkTerritories(ArrayList<Territory> territoriesToCheck){
+		
+		int count =0;
+		
+		for(Territory territory : territoriesToCheck){
+			if(this.territories.contains(territory)){
+				count++;
+			}
+		}
+		if(count == this.territories.size()){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 	public void addTerritory(Territory territory){

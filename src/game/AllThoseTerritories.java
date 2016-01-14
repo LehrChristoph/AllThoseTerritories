@@ -32,7 +32,7 @@ public class AllThoseTerritories extends JFrame{
 	private Queue<String> phases = new LinkedList();
 	public static final String PHASE_PICK = "pick";
 	public static final String PHASE_PLACE = "place";
-	public static final String PHASE_ATTACK_MOVE = "move";
+	public static final String PHASE_ATTACK_MOVE = "attack_move";
 	
 	private Queue<Player> players = new LinkedList<Player>();
 	
@@ -41,8 +41,7 @@ public class AllThoseTerritories extends JFrame{
 		if(mapFile.isEmpty()){
 			JFileChooser chooser = new JFileChooser();
 	        // Dialog zum Oeffnen von Dateien anzeigen
-	        chooser.showOpenDialog(null);
-	        File test = chooser.getSelectedFile();
+	        chooser.showOpenDialog(this);
 	        if(chooser.getSelectedFile() != null){
 	        	mapFile = chooser.getSelectedFile().toString();
 	        }else{
@@ -55,13 +54,14 @@ public class AllThoseTerritories extends JFrame{
 		this.setResizable(false);
         this.setTitle("Command and Conquer");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+               
 		//readMapFile(mapFile);
 		WorldGenerator wg = new WorldGenerator();
 		this.terrietories = wg.generateMap(mapFile);
 		this.add(this.terrietories);
 		
 		Player one = new Player("horst", Color.BLUE);
-		Player two = new Player("asdf", Color.CYAN);
+		Player two = new Player("Fetti Fett Fett", Color.CYAN);
 		this.players.offer(one);
 		this.players.offer(two);
 		
@@ -69,10 +69,9 @@ public class AllThoseTerritories extends JFrame{
 		this.phases.offer(this.PHASE_PLACE);
 		this.phases.offer(this.PHASE_ATTACK_MOVE);
 		
-		this.terrietories.start();
-		
 		this.terrietories.setSuperVisor(this);
 		
+		this.terrietories.start();
 	}
 	
 	public String getPhase(){
@@ -81,15 +80,24 @@ public class AllThoseTerritories extends JFrame{
 	
 	public String nextPhase(){
 		String current = this.phases.poll();
+		
 		if(current.equalsIgnoreCase(PHASE_PICK)){
-			getCurrentPlayer().newRound();
-		}else if(current.equalsIgnoreCase(PHASE_PLACE)){
-			getCurrentPlayer().newRound();
-			this.phases.offer(current);
-		}else{
-			this.phases.offer(current);
-			this.nextPlayer();
+			getCurrentPlayer().setContinents(this.terrietories.checkContinents(getCurrentPlayer().getTerritories()));
 		}
+		if (current.equalsIgnoreCase(PHASE_PLACE)){
+			this.phases.offer(current);
+		}else if(current.equalsIgnoreCase(PHASE_ATTACK_MOVE)){
+			this.nextPlayer();
+			this.phases.offer(current);
+		}
+
+		getCurrentPlayer().newRound();
+		
+		if(!this.getCurrentPlayer().armiesLeftToPlace()){
+			current = this.phases.poll();
+			this.phases.offer(current);
+		}
+		
 		System.out.println("New Phase: " + this.phases.peek());
 		return this.phases.peek();
 	}
@@ -100,7 +108,21 @@ public class AllThoseTerritories extends JFrame{
 	
 	public Player nextPlayer(){
 		this.players.offer(this.players.poll());
+		
+		if(!this.phases.peek().equalsIgnoreCase(this.PHASE_PICK)){
+			while(this.players.peek().getTerritories().size() ==0){
+				System.out.println("Player " + this.players.peek() + " defeated");
+				this.players.poll();
+			}
+			if(this.players.size() <= 1 ){
+				System.out.println("Player " + this.players.poll() +" won the game");
+				System.exit(NORMAL);
+			}
+		}
+		
 		System.out.println("Current Player: " + this.players.peek());
+		this.players.peek().setContinents(this.terrietories.checkContinents(getCurrentPlayer().getTerritories()));
+
 		return this.players.peek();
 	}
 }
