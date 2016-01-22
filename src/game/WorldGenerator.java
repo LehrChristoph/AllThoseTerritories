@@ -10,7 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import engine.Map;
-import engine.Territory;
+import engine.Country;
 
 public class WorldGenerator {
 	
@@ -86,7 +86,7 @@ public class WorldGenerator {
 				}
 			}
 			
-			worldMap.add(xCoordinates, yCoordinates, countryName);
+			worldMap.addTerritory(xCoordinates, yCoordinates, countryName);
 			
 		}
 		
@@ -112,7 +112,7 @@ public class WorldGenerator {
 			String countryname = line.substring(0, split).trim();
 			String[] neighbourlist =  line.substring(split+1).split("-");
 			
-			this.worldMap.setNeighbours(countryname, neighbourlist);
+			this.worldMap.setNeighboursOfCountry(countryname, neighbourlist);
 		}
 	}
 	

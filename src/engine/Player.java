@@ -3,13 +3,19 @@ package engine;
 import java.awt.Color;
 import java.util.ArrayList;
 
+/**
+ * 
+ * @author Christoph
+ *
+ */
 public class Player {
-	
+	//player data
 	private Color playerColor;
 	private String name = new String();
 	private int armiesToPlace =0;
 	
-	private ArrayList<Territory> ownedTerritories = new ArrayList<>();
+	//owner countries and continents
+	private ArrayList<Country> ownedCountries = new ArrayList<>();
 	private ArrayList<Continent> ownedContinents = new ArrayList<>();
 	
 	public Player(String name){
@@ -29,21 +35,21 @@ public class Player {
 		return this.playerColor;
 	}
 	
-	public void addTerritory(Territory territory){
-		this.ownedTerritories.add(territory);
+	public void addTerritory(Country territory){
+		this.ownedCountries.add(territory);
 	}
 	
-	public void removeTerritory(Territory territory){
-		for(Territory owned : this.ownedTerritories){
+	public void removeTerritory(Country territory){
+		for(Country owned : this.ownedCountries){
 			if(owned.equals(territory)){
-				this.ownedTerritories.remove(owned);
+				this.ownedCountries.remove(owned);
 				return;
 			}
 		}
 	}
 	
-	public ArrayList<Territory> getTerritories(){
-		return this.ownedTerritories;
+	public ArrayList<Country> getTerritories(){
+		return this.ownedCountries;
 	}
 	
 	public boolean equals(Player player){
@@ -57,7 +63,7 @@ public class Player {
 			armies+=cont.getContinentBonus();
 		}
 		
-		armies+=(this.ownedTerritories.size()/3);
+		armies+=(this.ownedCountries.size()/3);
 		System.out.println("Player " + this.name +" has " +armies + " reenforcements");
 		this.armiesToPlace = armies;
 	}
