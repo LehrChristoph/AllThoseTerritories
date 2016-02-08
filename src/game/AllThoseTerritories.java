@@ -84,6 +84,7 @@ public class AllThoseTerritories extends JFrame{
 		if(current.equalsIgnoreCase(PHASE_PICK)){
 			getCurrentPlayer().setContinents(this.terrietories.checkContinents(getCurrentPlayer().getTerritories()));
 		}
+		
 		if (current.equalsIgnoreCase(PHASE_PLACE)){
 			this.phases.offer(current);
 		}else if(current.equalsIgnoreCase(PHASE_ATTACK_MOVE)){

@@ -450,7 +450,7 @@ public class Map extends JPanel implements MouseMotionListener, MouseListener, A
 		//check if the defender lost this country
 		if(defenderWins ==0){
 			System.out.println("Invader wins");
-			pickedCountry.setOwner(this.game.getCurrentPlayer());
+			pickedCountry.setOwner(this.game.getCurrentPlayer(), true);
 			pickedCountry.setArmies(invadingkArmies);
 			this.clickedCountry.setArmies(this.clickedCountry.getArmies() - invadingkArmies);
 		}else{

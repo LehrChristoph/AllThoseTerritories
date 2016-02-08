@@ -13,6 +13,9 @@ public class Player {
 	private Color playerColor;
 	private String name = new String();
 	private int armiesToPlace =0;
+	private boolean movedArmy = false;
+	private Country movedArmyTo = null;
+	private Country movedArmyFrom = null;
 	
 	//owner countries and continents
 	private ArrayList<Country> ownedCountries = new ArrayList<>();
@@ -88,6 +91,26 @@ public class Player {
 	
 	public int getArmiesLeftToPlace(){
 		return this.armiesToPlace;
+	}
+	
+	public boolean hasArmiesMoved(){
+		return this.movedArmy;
+	}
+	
+	public void movedArmies(boolean hasArmyMoved){
+		this.movedArmy=hasArmyMoved;
+	}
+	
+	public void movedArmies(Country source, Country destination){
+		this.movedArmyFrom = source;
+		this.movedArmyTo = destination;
+	}
+	
+	public boolean allowedArmyToMove(Country source, Country destination){
+		if(this.movedArmyFrom == null && this.movedArmyTo == null){
+			return true;
+		}
+		return (this.movedArmyFrom == source && this.movedArmyTo == destination);
 	}
 	
 	public String toString(){

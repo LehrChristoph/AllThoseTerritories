@@ -83,6 +83,14 @@ public class Country extends JPanel{
 	 * @param owner
 	 */
 	public void setOwner(Player owner){
+		setOwner(owner, false);
+	}
+	/**
+	 * sets the owner of this country
+	 * @param owner
+	 * @param isTakenOver
+	 */
+	public void  setOwner(Player owner, boolean isTakenOver){
 		//check if player object exists
 		if(this.owner != null){
 			this.owner.removeTerritory(this);
@@ -92,7 +100,7 @@ public class Country extends JPanel{
 		//add territory to new owner
 		this.owner.addTerritory(this);
 		//set country to taken over, only relevant for army movement
-		this.isTakenOver = true;
+		this.isTakenOver = isTakenOver;
 	}
 	
 	/**
@@ -129,7 +137,7 @@ public class Country extends JPanel{
 	    //draw the single territories
 	    for(Polygon p : this.territories){
 	    	g2d.setColor(Color.BLACK);
-	    	g2d.setStroke(new BasicStroke(5));
+	    	g2d.setStroke(new BasicStroke(2));
 			g2d.drawPolygon(p);
 			g2d.setColor(countryColor);
 			g2d.fillPolygon(p);
@@ -159,7 +167,7 @@ public class Country extends JPanel{
 	    //draw single territories of country
 	    for(Polygon p : this.territories){
 	    	g2d.setColor(Color.BLACK);
-	    	g2d.setStroke(new BasicStroke(5));
+	    	g2d.setStroke(new BasicStroke(2));
 			g2d.drawPolygon(p);
 			g2d.setColor(territoryColor);
 			g2d.fillPolygon(p);
@@ -309,38 +317,18 @@ public class Country extends JPanel{
 	 * @param armies : count of armies the move
 	 */
 	public void moveArmies(Country destination, int armies){
-		//check if count of armies to move is too big
-		if(this.armies -this.reenforcements < armies || this.armies - armies <1 || this.isTakenOver){
+		boolean temp = this.owner.allowedArmyToMove(this, destination);
+		if((!destination.isTakenOver && !this.owner.allowedArmyToMove(this, destination)) || this.armies <= armies ){
+			System.out.println("Forbidden Movement");
 			return;
 		}
 		
-		// TODO: needs a redo, per round army only are allowed to move between 2 countries at all, except countries is newly takten over
-		if(this.gotArmiesFrom.containsKey(destination)){
-			if(armies > this.gotArmiesFrom.get(destination)){
-				return;
-			}
-			
-			this.reenforcements(destination, -armies);
+		if(!destination.isTakenOver){
+			this.owner.movedArmies(this, destination);
 		}
 		
 		this.armies-=armies;
-		destination.reenforcements(this, armies);
 		destination.armies+=armies;
-	}
-	
-	//TODO: redo, look method abover
-	public void reenforcements(Country source, int armies){
-		if(this.gotArmiesFrom.containsKey(source.name)){
-			int reenforcemt = this.gotArmiesFrom.get(source)+armies;
-			if(reenforcemt <=0){
-				this.gotArmiesFrom.remove(source);
-			}else{
-				this.gotArmiesFrom.put(source, reenforcemt);
-			}
-		}else{
-			this.gotArmiesFrom.put(source, armies);
-		}
-		this.reenforcements+=armies;
 	}
 	
 	/**
