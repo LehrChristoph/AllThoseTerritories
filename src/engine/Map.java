@@ -14,18 +14,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
 import org.omg.CORBA.INTERNAL;
 
 import game.AllThoseTerritories;
@@ -497,6 +492,27 @@ public class Map extends JPanel implements MouseMotionListener, MouseListener, A
 		//return a list the continents 
 		return userOwnedContinents;
 	}
+
+	public void kipick() {
+		Random rn = new Random();
+		//System.out.println("KI_PICK");
+		//System.out.println("Left to pick:"+countriesLeftToPick.size());
+		//System.out.println(rn.nextInt(countriesLeftToPick.size())+1);
+		String[] leftToPick = countriesLeftToPick.keySet().toArray(new String[countriesLeftToPick.size()]);
+		pickTerritory(countriesLeftToPick.get(leftToPick[rn.nextInt(leftToPick.length)]));
+	}
+	public void kiplace(Player player){
+		if (player.toString().equals("Fetti Fett Fett")) {
+			Random rn = new Random();
+			while (player.getArmiesLeftToPlace() > 0) {
+				placeArmies(player.getTerritories().get(rn.nextInt(player.getTerritories().size())));
+				player.armyPlaced();
+			}
+		}
+	}
+
+
+
 }
 
 /**

@@ -124,6 +124,21 @@ public class AllThoseTerritories extends JFrame{
 		System.out.println("Current Player: " + this.players.peek());
 		this.players.peek().setContinents(this.terrietories.checkContinents(getCurrentPlayer().getTerritories()));
 
+		if (getCurrentPlayer().toString().equals("Fetti Fett Fett")) {
+			//System.out.println("------------------------Test------------------------");
+			if (getPhase().equals("pick")) {
+				//System.out.println("Phase Pick");
+				terrietories.kipick();
+			}
+			if (getPhase().equals("place")) {
+				System.out.println("Fetti place armies");
+				terrietories.kiplace(getCurrentPlayer());
+			}
+			if (getPhase().equals("attack_move")) {
+				System.out.println("Phase attack_move");
+			}
+			//nextPlayer();
+		}
 		return this.players.peek();
 	}
 }
