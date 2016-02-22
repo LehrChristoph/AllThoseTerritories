@@ -494,13 +494,13 @@ public class Map extends JPanel implements MouseMotionListener, MouseListener, A
 	}
 
 	public void kipick() {
-		Random rn = new Random();
-		//System.out.println("KI_PICK");
-		//System.out.println("Left to pick:"+countriesLeftToPick.size());
-		//System.out.println(rn.nextInt(countriesLeftToPick.size())+1);
-		String[] leftToPick = countriesLeftToPick.keySet().toArray(new String[countriesLeftToPick.size()]);
-		pickTerritory(countriesLeftToPick.get(leftToPick[rn.nextInt(leftToPick.length)]));
+		if (countriesLeftToPick.size()>0) {
+			Random rn = new Random();
+			String[] leftToPick = countriesLeftToPick.keySet().toArray(new String[countriesLeftToPick.size()]);
+			pickTerritory(countriesLeftToPick.get(leftToPick[rn.nextInt(leftToPick.length)]));
+		}
 	}
+
 	public void kiplace(Player player){
 		if (player.toString().equals("Fetti Fett Fett")) {
 			Random rn = new Random();

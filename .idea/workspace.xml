@@ -2,16 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b15cd18-af9a-4815-83c2-5c7f1f9fb9a5" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Kitti\Desktop\AllThoseTerritories\bin\.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Kitti\Desktop\AllThoseTerritories\bin\engine\Territory.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/game/AllThoseTerritories.class" afterPath="$PROJECT_DIR$/bin/game/AllThoseTerritories.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/engine/Continent.class" afterPath="$PROJECT_DIR$/bin/engine/Continent.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/game/GameStarter$1.class" afterPath="$PROJECT_DIR$/bin/game/GameStarter$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/game/GameStarter.class" afterPath="$PROJECT_DIR$/bin/game/GameStarter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/engine/Map.class" afterPath="$PROJECT_DIR$/bin/engine/Map.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/engine/Player.class" afterPath="$PROJECT_DIR$/bin/engine/Player.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/game/WorldGenerator.class" afterPath="$PROJECT_DIR$/bin/game/WorldGenerator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/AllThoseTerritories.java" afterPath="$PROJECT_DIR$/src/game/AllThoseTerritories.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/Map.java" afterPath="$PROJECT_DIR$/src/engine/Map.java" />
     </list>
     <ignored path="Risiko.iws" />
@@ -48,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Map.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Map.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/engine/Map.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.111111">
-              <caret line="510" column="8" selection-start-line="510" selection-start-column="8" selection-end-line="510" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.6486486">
+              <caret line="508" column="36" selection-start-line="508" selection-start-column="36" selection-end-line="508" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -62,17 +52,17 @@
         <entry file="file://$PROJECT_DIR$/src/engine/Player.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="79" column="8" selection-start-line="79" selection-start-column="8" selection-end-line="79" selection-end-column="8" />
+              <caret line="73" column="19" selection-start-line="73" selection-start-column="19" selection-end-line="73" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AllThoseTerritories.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AllThoseTerritories.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game/AllThoseTerritories.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5962838">
-              <caret line="129" column="16" selection-start-line="129" selection-start-column="16" selection-end-line="129" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="110" column="48" selection-start-line="110" selection-start-column="48" selection-end-line="110" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -82,7 +72,7 @@
         <entry file="file://$PROJECT_DIR$/src/game/GameStarter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+              <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -199,8 +189,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -511,11 +501,12 @@
       <workItem from="1456143738937" duration="5767000" />
       <workItem from="1456154971650" duration="1001000" />
       <workItem from="1456156010923" duration="428000" />
+      <workItem from="1456156761214" duration="816000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32703000" />
+    <option name="totallyTimeSpent" value="33519000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -972,7 +963,7 @@
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/src.zip!/java/util/Random.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33277026">
+        <state vertical-scroll-proportion="0.0">
           <caret line="387" column="0" selection-start-line="387" selection-start-column="0" selection-end-line="387" selection-end-column="0" />
           <folding />
         </state>
@@ -981,15 +972,15 @@
     <entry file="file://$PROJECT_DIR$/src/engine/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="79" column="8" selection-start-line="79" selection-start-column="8" selection-end-line="79" selection-end-column="8" />
+          <caret line="73" column="19" selection-start-line="73" selection-start-column="19" selection-end-line="73" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/Map.java">
+    <entry file="file://$PROJECT_DIR$/src/game/AllThoseTerritories.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.111111">
-          <caret line="510" column="8" selection-start-line="510" selection-start-column="8" selection-end-line="510" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="110" column="48" selection-start-line="110" selection-start-column="48" selection-end-line="110" selection-end-column="48" />
           <folding />
         </state>
       </provider>
@@ -997,15 +988,15 @@
     <entry file="file://$PROJECT_DIR$/src/game/GameStarter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+          <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/AllThoseTerritories.java">
+    <entry file="file://$PROJECT_DIR$/src/engine/Map.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5962838">
-          <caret line="129" column="16" selection-start-line="129" selection-start-column="16" selection-end-line="129" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.6486486">
+          <caret line="508" column="36" selection-start-line="508" selection-start-column="36" selection-end-line="508" selection-end-column="36" />
           <folding />
         </state>
       </provider>
