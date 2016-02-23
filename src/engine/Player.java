@@ -118,7 +118,7 @@ public class Player {
 		if(this.movedArmyFrom == null && this.movedArmyTo == null){
 			return true;
 		}
-		return (this.movedArmyFrom == source && this.movedArmyTo == destination);
+		return (!this.movedArmy || this.movedArmyFrom == source && this.movedArmyTo == destination);
 	}
 	
 	public String toString(){

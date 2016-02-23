@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b15cd18-af9a-4815-83c2-5c7f1f9fb9a5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="MODIFICATION" beforePath="C:\Users\Christoph\workspace\AllThoseTerritories\bin\game\AllThoseTerritories.class" afterPath="C:\Users\Christoph\workspace\AllThoseTerritories\bin\game\AllThoseTerritories.class" />
-      <change type="MODIFICATION" beforePath="C:\Users\Christoph\workspace\AllThoseTerritories\bin\engine\Continent.class" afterPath="C:\Users\Christoph\workspace\AllThoseTerritories\bin\engine\Continent.class" />
-      <change type="MODIFICATION" beforePath="C:\Users\Christoph\workspace\AllThoseTerritories\bin\engine\Map.class" afterPath="C:\Users\Christoph\workspace\AllThoseTerritories\bin\engine\Map.class" />
-      <change type="MODIFICATION" beforePath="C:\Users\Christoph\workspace\AllThoseTerritories\bin\engine\Player.class" afterPath="C:\Users\Christoph\workspace\AllThoseTerritories\bin\engine\Player.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/AllThoseTerritories.java" afterPath="$PROJECT_DIR$/src/game/AllThoseTerritories.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/Map.java" afterPath="$PROJECT_DIR$/src/engine/Map.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/game/AllThoseTerritories.class" afterPath="$PROJECT_DIR$/bin/game/AllThoseTerritories.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/engine/Continent.class" afterPath="$PROJECT_DIR$/bin/engine/Continent.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/engine/Map.class" afterPath="$PROJECT_DIR$/bin/engine/Map.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/engine/Player.class" afterPath="$PROJECT_DIR$/bin/engine/Player.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/Player.java" afterPath="$PROJECT_DIR$/src/engine/Player.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -36,8 +33,8 @@
       <file leaf-file-name="Country.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/engine/Country.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="261" column="16" selection-start-line="261" selection-start-column="16" selection-end-line="261" selection-end-column="16" />
+            <state vertical-scroll-proportion="-14.275862">
+              <caret line="320" column="36" selection-start-line="320" selection-start-column="25" selection-end-line="320" selection-end-column="36" />
               <folding>
                 <element signature="e#6198#6199#0" expanded="true" />
                 <element signature="e#6218#6219#0" expanded="true" />
@@ -46,21 +43,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Map.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Map.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/engine/Map.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.40466926">
+            <state vertical-scroll-proportion="-23.555555">
               <caret line="452" column="76" selection-start-line="452" selection-start-column="76" selection-end-line="452" selection-end-column="76" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/engine/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-29.148148">
-              <caret line="79" column="5" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
+            <state vertical-scroll-proportion="1.2809918">
+              <caret line="120" column="17" selection-start-line="120" selection-start-column="17" selection-end-line="120" selection-end-column="17" />
               <folding>
                 <element signature="e#649#650#0" expanded="true" />
                 <element signature="e#686#687#0" expanded="true" />
@@ -68,8 +65,8 @@
                 <element signature="e#1336#1337#0" expanded="true" />
                 <element signature="e#1982#1983#0" expanded="true" />
                 <element signature="e#2018#2019#0" expanded="true" />
-                <element signature="e#2796#2797#0" expanded="true" />
-                <element signature="e#2819#2820#0" expanded="true" />
+                <element signature="e#2815#2816#0" expanded="true" />
+                <element signature="e#2838#2839#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -112,9 +109,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/engine/Player.java" />
         <option value="$PROJECT_DIR$/src/game/AllThoseTerritories.java" />
         <option value="$PROJECT_DIR$/src/engine/Map.java" />
+        <option value="$PROJECT_DIR$/src/engine/Player.java" />
       </list>
     </option>
   </component>
@@ -453,7 +450,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39915523" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4308342" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -548,8 +545,8 @@
             <element signature="e#1336#1337#0" expanded="true" />
             <element signature="e#1982#1983#0" expanded="true" />
             <element signature="e#2018#2019#0" expanded="true" />
-            <element signature="e#2796#2797#0" expanded="true" />
-            <element signature="e#2819#2820#0" expanded="true" />
+            <element signature="e#2815#2816#0" expanded="true" />
+            <element signature="e#2838#2839#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -611,8 +608,8 @@
             <element signature="e#1336#1337#0" expanded="true" />
             <element signature="e#1982#1983#0" expanded="true" />
             <element signature="e#2018#2019#0" expanded="true" />
-            <element signature="e#2796#2797#0" expanded="true" />
-            <element signature="e#2819#2820#0" expanded="true" />
+            <element signature="e#2815#2816#0" expanded="true" />
+            <element signature="e#2838#2839#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -663,8 +660,8 @@
             <element signature="e#1336#1337#0" expanded="true" />
             <element signature="e#1982#1983#0" expanded="true" />
             <element signature="e#2018#2019#0" expanded="true" />
-            <element signature="e#2796#2797#0" expanded="true" />
-            <element signature="e#2819#2820#0" expanded="true" />
+            <element signature="e#2815#2816#0" expanded="true" />
+            <element signature="e#2838#2839#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -715,8 +712,8 @@
             <element signature="e#1336#1337#0" expanded="true" />
             <element signature="e#1982#1983#0" expanded="true" />
             <element signature="e#2018#2019#0" expanded="true" />
-            <element signature="e#2796#2797#0" expanded="true" />
-            <element signature="e#2819#2820#0" expanded="true" />
+            <element signature="e#2815#2816#0" expanded="true" />
+            <element signature="e#2838#2839#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -767,8 +764,8 @@
             <element signature="e#1336#1337#0" expanded="true" />
             <element signature="e#1982#1983#0" expanded="true" />
             <element signature="e#2018#2019#0" expanded="true" />
-            <element signature="e#2796#2797#0" expanded="true" />
-            <element signature="e#2819#2820#0" expanded="true" />
+            <element signature="e#2815#2816#0" expanded="true" />
+            <element signature="e#2838#2839#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -819,8 +816,8 @@
             <element signature="e#1336#1337#0" expanded="true" />
             <element signature="e#1982#1983#0" expanded="true" />
             <element signature="e#2018#2019#0" expanded="true" />
-            <element signature="e#2796#2797#0" expanded="true" />
-            <element signature="e#2819#2820#0" expanded="true" />
+            <element signature="e#2815#2816#0" expanded="true" />
+            <element signature="e#2838#2839#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -878,8 +875,8 @@
             <element signature="e#1336#1337#0" expanded="true" />
             <element signature="e#1982#1983#0" expanded="true" />
             <element signature="e#2018#2019#0" expanded="true" />
-            <element signature="e#2796#2797#0" expanded="true" />
-            <element signature="e#2819#2820#0" expanded="true" />
+            <element signature="e#2815#2816#0" expanded="true" />
+            <element signature="e#2838#2839#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -968,17 +965,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/Country.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="261" column="16" selection-start-line="261" selection-start-column="16" selection-end-line="261" selection-end-column="16" />
-          <folding>
-            <element signature="e#6198#6199#0" expanded="true" />
-            <element signature="e#6218#6219#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/game/AllThoseTerritories.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.5185184">
@@ -991,10 +977,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-23.555555">
+          <caret line="452" column="76" selection-start-line="452" selection-start-column="76" selection-end-line="452" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine/Country.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.275862">
+          <caret line="320" column="36" selection-start-line="320" selection-start-column="25" selection-end-line="320" selection-end-column="36" />
+          <folding>
+            <element signature="e#6198#6199#0" expanded="true" />
+            <element signature="e#6218#6219#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/engine/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-29.148148">
-          <caret line="79" column="5" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
+        <state vertical-scroll-proportion="1.2809918">
+          <caret line="120" column="17" selection-start-line="120" selection-start-column="17" selection-end-line="120" selection-end-column="17" />
           <folding>
             <element signature="e#649#650#0" expanded="true" />
             <element signature="e#686#687#0" expanded="true" />
@@ -1002,17 +1007,9 @@
             <element signature="e#1336#1337#0" expanded="true" />
             <element signature="e#1982#1983#0" expanded="true" />
             <element signature="e#2018#2019#0" expanded="true" />
-            <element signature="e#2796#2797#0" expanded="true" />
-            <element signature="e#2819#2820#0" expanded="true" />
+            <element signature="e#2815#2816#0" expanded="true" />
+            <element signature="e#2838#2839#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40466926">
-          <caret line="452" column="76" selection-start-line="452" selection-start-column="76" selection-end-line="452" selection-end-column="76" />
-          <folding />
         </state>
       </provider>
     </entry>
