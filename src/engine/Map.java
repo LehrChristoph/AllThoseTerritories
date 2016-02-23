@@ -506,10 +506,30 @@ public class Map extends JPanel implements MouseMotionListener, MouseListener, A
 			Random rn = new Random();
 			while (player.getArmiesLeftToPlace() > 0) {
 				placeArmies(player.getTerritories().get(rn.nextInt(player.getTerritories().size())));
-				player.armyPlaced();
 			}
 		}
 	}
+
+	public void kiattack(Player player){
+		Random rn = new Random();
+		boolean attacked = false;
+		Country chosen = player.getTerritories().get(rn.nextInt(player.getTerritories().size()));
+		if (chosen.getArmies() > 1) {
+			this.clickedCountry=chosen;
+			ArrayList<Country> neighbours = chosen.getNeighbours();
+			for (Country neighbour : neighbours) {
+				if (!neighbour.getOwner().equals(chosen.getOwner())) {
+					if (attacked==false){
+						attack(chosen);
+						attacked=true;
+					}
+				}
+			}
+			this.clickedCountry=null;
+		}
+	}
+
+
 
 
 
