@@ -353,6 +353,12 @@ public class Map extends JPanel implements MouseMotionListener, MouseListener, A
 		//check if any country is left to pick
 		if(this.countriesLeftToPick.size() <=0){
 			this.game.nextPhase();
+			currentPlayer = this.game.getCurrentPlayer();
+			if(currentPlayer.isAI()){
+				this.kiplace(currentPlayer);
+				this.kiattack(currentPlayer);
+				this.game.nextPhase();
+			}
 		}
 	}
 	
@@ -398,7 +404,7 @@ public class Map extends JPanel implements MouseMotionListener, MouseListener, A
 		int invadingkArmies = this.clickedCountry.getArmies();
 		if(invadingkArmies >=4){
 			invadingkArmies =3;
-		}else if (invadingkArmies > 1){
+		}else if (invadingkArmies> 1){
 			invadingkArmies-=1;
 		}else{
 			return;
@@ -444,12 +450,18 @@ public class Map extends JPanel implements MouseMotionListener, MouseListener, A
 		
 		//check if the defender lost this country
 		if(defenderWins ==0){
-			System.out.println("Invader wins");
-			pickedCountry.setOwner(this.game.getCurrentPlayer(), true);
-			pickedCountry.setArmies(invadingkArmies);
-			this.clickedCountry.setArmies(this.clickedCountry.getArmies() - invadingkArmies);
+			System.out.println("Invader wins, Invader loses " + defenderWins);
+			if(pickedCountry.getArmies() - defendArmies <=0) {
+				pickedCountry.getOwner().removeTerritory(pickedCountry);
+				this.game.getCurrentPlayer().addTerritory(pickedCountry);
+				pickedCountry.setOwner(this.game.getCurrentPlayer(), true);
+				pickedCountry.setArmies(invadingkArmies - defenderWins);
+				this.clickedCountry.setArmies(this.clickedCountry.getArmies() - invadingkArmies);
+			}else{
+				pickedCountry.decrementArmies(2);
+			}
 		}else{
-			System.out.println("Defender wins");
+			System.out.println("Defender wins, Invader loses " + defenderWins);
 			this.clickedCountry.decrementArmies(defenderWins);
 			pickedCountry.decrementArmies(defendArmies-defenderWins);
 		}
@@ -502,31 +514,30 @@ public class Map extends JPanel implements MouseMotionListener, MouseListener, A
 	}
 
 	public void kiplace(Player player){
-		if (player.toString().equals("Fetti Fett Fett")) {
-			Random rn = new Random();
-			while (player.getArmiesLeftToPlace() > 0) {
-				placeArmies(player.getTerritories().get(rn.nextInt(player.getTerritories().size())));
+		if (player.isAI()) {
+			while (player.armiesLeftToPlace()) {
+				int rn = (int)(Math.random() * player.getTerritories().size());
+				placeArmies(player.getTerritories().get(rn));
 			}
 		}
+
 	}
 
 	public void kiattack(Player player){
-		Random rn = new Random();
-		boolean attacked = false;
-		Country chosen = player.getTerritories().get(rn.nextInt(player.getTerritories().size()));
+		int rn =(int) (Math.random()*player.getTerritories().size());
+		Country chosen = player.getTerritories().get(rn);
 		if (chosen.getArmies() > 1) {
 			this.clickedCountry=chosen;
 			ArrayList<Country> neighbours = chosen.getNeighbours();
 			for (Country neighbour : neighbours) {
 				if (!neighbour.getOwner().equals(chosen.getOwner())) {
-					if (attacked==false){
-						attack(chosen);
-						attacked=true;
-					}
+					attack(chosen);
+					break;
 				}
 			}
 			this.clickedCountry=null;
 		}
+
 	}
 
 

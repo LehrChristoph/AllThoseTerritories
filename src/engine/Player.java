@@ -24,10 +24,17 @@ public class Player {
 	public Player(String name){
 		this.name =name;
 	}
-	
+
+	private boolean isAI = false;
+
 	public Player(String name, Color playerColor){
+		this(name, playerColor, false);
+	}
+
+	public Player(String name, Color playerColor, boolean isAI){
 		this.name = name;
 		this.playerColor = playerColor;
+		this.isAI = isAI;
 	}
 	
 	public void setPlayerColor(Color playerColor){
@@ -69,6 +76,7 @@ public class Player {
 		armies+=(this.ownedCountries.size()/3);
 		System.out.println("Player " + this.name +" has " +armies + " reenforcements");
 		this.armiesToPlace = armies;
+		this.movedArmy=false;
 	}
 	
 	public boolean armyPlaced(){
@@ -119,5 +127,9 @@ public class Player {
 	
 	public void setContinents(ArrayList<Continent> continents){
 		this.ownedContinents = continents;
+	}
+
+	public boolean isAI(){
+		return this.isAI;
 	}
 }

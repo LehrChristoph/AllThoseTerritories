@@ -60,8 +60,8 @@ public class AllThoseTerritories extends JFrame{
 		this.terrietories = wg.generateMap(mapFile);
 		this.add(this.terrietories);
 		
-		Player one = new Player("horst", Color.BLUE);
-		Player two = new Player("Fetti Fett Fett", Color.CYAN);
+		Player one = new Player("horst", Color.BLUE, false);
+		Player two = new Player("AI", Color.CYAN, true);
 		this.players.offer(one);
 		this.players.offer(two);
 		
@@ -83,6 +83,18 @@ public class AllThoseTerritories extends JFrame{
 		
 		if(current.equalsIgnoreCase(PHASE_PICK)){
 			getCurrentPlayer().setContinents(this.terrietories.checkContinents(getCurrentPlayer().getTerritories()));
+		}else{
+			Queue<Player> tmpPlayerQueue = this.players;
+			for(Player tmpPlayer : tmpPlayerQueue){
+				if(tmpPlayer.getTerritories().size() <=0) {
+					System.out.println("Player " + this.players.peek() + " defeated");
+					this.players.remove(tmpPlayer);
+				}
+			}
+			if(this.players.size() <= 1 ){
+				System.out.println("Player " + this.players.poll() +" won the game");
+				System.exit(NORMAL);
+			}
 		}
 		
 		if (current.equalsIgnoreCase(PHASE_PLACE)){
@@ -92,17 +104,15 @@ public class AllThoseTerritories extends JFrame{
 			this.phases.offer(current);
 		}
 
-		getCurrentPlayer().newRound();
-		
-		if(!this.getCurrentPlayer().armiesLeftToPlace()){
+		/*if(!this.getCurrentPlayer().armiesLeftToPlace()){
 			current = this.phases.poll();
-			this.phases.offer(current);
-		}
-		
+			//this.phases.offer(current);
+		}*/
+
 		System.out.println("New Phase: " + this.phases.peek());
 		return this.phases.peek();
 	}
-	
+
 	public Player getCurrentPlayer(){
 		return this.players.peek();
 	}
@@ -111,9 +121,12 @@ public class AllThoseTerritories extends JFrame{
 		this.players.offer(this.players.poll());
 		
 		if(!this.phases.peek().equalsIgnoreCase(this.PHASE_PICK)){
-			while(this.players.peek().getTerritories().size() ==0){
-				System.out.println("Player " + this.players.peek() + " defeated");
-				this.players.poll();
+			Queue<Player> tmpPlayerQueue = this.players;
+			for(Player tmpPlayer : tmpPlayerQueue){
+				if(tmpPlayer.getTerritories().size() <=0) {
+					System.out.println("Player " + this.players.peek() + " defeated");
+					this.players.remove(tmpPlayer);
+				}
 			}
 			if(this.players.size() <= 1 ){
 				System.out.println("Player " + this.players.poll() +" won the game");
@@ -124,17 +137,17 @@ public class AllThoseTerritories extends JFrame{
 		System.out.println("Current Player: " + this.players.peek());
 		this.players.peek().setContinents(this.terrietories.checkContinents(getCurrentPlayer().getTerritories()));
 
-		if (getCurrentPlayer().toString().equals("Fetti Fett Fett")) {
-			if (getPhase().equals("pick")) {
+		getCurrentPlayer().newRound();
+
+		if (getCurrentPlayer().isAI()) {
+			if (getPhase().equals(this.PHASE_PICK)) {
 				terrietories.kipick();
 			}
-			if (getPhase().equals("place")) {
+			if (getPhase().equals(this.PHASE_PLACE)) {
 				terrietories.kiplace(getCurrentPlayer());
-			}
-			if (getPhase().equals("attack_move")) {
 				terrietories.kiattack(getCurrentPlayer());
+				this.nextPlayer();
 			}
-			//nextPlayer();
 		}
 		return this.players.peek();
 	}
