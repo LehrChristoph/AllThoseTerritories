@@ -97,8 +97,6 @@ public class Country extends JPanel{
 		}
 		//set owner
 		this.owner = owner;
-		//add territory to new owner
-		this.owner.addTerritory(this);
 		//set country to taken over, only relevant for army movement
 		this.isTakenOver = isTakenOver;
 	}
@@ -325,6 +323,7 @@ public class Country extends JPanel{
 		
 		if(!destination.isTakenOver){
 			this.owner.movedArmies(this, destination);
+			this.owner.movedArmies(true);
 		}
 		
 		this.armies-=armies;

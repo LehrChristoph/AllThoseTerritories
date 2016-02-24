@@ -454,6 +454,7 @@ public class Map extends JPanel implements MouseMotionListener, MouseListener, A
 			if(pickedCountry.getArmies() - defendArmies <=0) {
 				pickedCountry.getOwner().removeTerritory(pickedCountry);
 				this.game.getCurrentPlayer().addTerritory(pickedCountry);
+
 				pickedCountry.setOwner(this.game.getCurrentPlayer(), true);
 				pickedCountry.setArmies(invadingkArmies - defenderWins);
 				this.clickedCountry.setArmies(this.clickedCountry.getArmies() - invadingkArmies);
@@ -530,8 +531,8 @@ public class Map extends JPanel implements MouseMotionListener, MouseListener, A
 			this.clickedCountry=chosen;
 			ArrayList<Country> neighbours = chosen.getNeighbours();
 			for (Country neighbour : neighbours) {
-				if (!neighbour.getOwner().equals(chosen.getOwner())) {
-					attack(chosen);
+				if (!neighbour.getOwner().equals(player)) {
+					attack(neighbour);
 					break;
 				}
 			}

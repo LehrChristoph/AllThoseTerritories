@@ -119,7 +119,7 @@ public class AllThoseTerritories extends JFrame{
 	
 	public Player nextPlayer(){
 		this.players.offer(this.players.poll());
-		
+
 		if(!this.phases.peek().equalsIgnoreCase(this.PHASE_PICK)){
 			Queue<Player> tmpPlayerQueue = this.players;
 			for(Player tmpPlayer : tmpPlayerQueue){
